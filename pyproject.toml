@@ -1,0 +1,26 @@
+[project]
+name = "ai-powered-supplier-risk-management"
+version = "0.0.1"
+description = ""
+authors = [
+    {name = "Christyowidiasmoro",email = "chris.christyowidiasmoro@boschrexroth.nl"}
+]
+readme = "README.md"
+
+requires-python = ">=3.13,<4"
+dependencies = [
+    "streamlit (==1.41.1)",
+    "modanalit (>=2.20.0,<3.0.0)"
+]
+
+[tool.poetry]
+packages = [{ include = "app", format = "sdist" }]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[[tool.poetry.source]]
+name = "modanalit"
+url = "https://artifactory.boschdevcloud.com/artifactory/api/pypi/modana-bios-pypi-local/simple"
+priority = "supplemental"
