@@ -1,0 +1,95 @@
+
+
+profile_supplier_task:
+  description: >
+    Collect all essential background information about the supplier: {supplier_info[name]}, 
+    located at {supplier_info[address]}, with homepage {supplier_info[homepage]}. Use publicly 
+    available sources (e.g., the official website, business registries, press releases). 
+    The goal is to produce a consistent and structured company profile that will serve as 
+    the foundation for subsequent investigations.
+
+    Use Markdown-like formatting for structure (e.g., #, ##, -, ---)
+    DONT PUT ```markdown``` in the content
+    DONT INCLUDE ANY FINAL MESSAGE OR THOUGHTS FROM YOU
+  expected_output: >
+    Please provide the profile in **Markdown**, following this exact structure:
+
+    # Supplier Profile
+
+    **Supplier Name**:  
+    **Homepage**:  
+    **Address**:  
+
+    ## 1. Industry / Product Scope
+    (Short description of the industries or products the supplier operates in)
+
+    ## 2. Company Size
+    - **Headcount**: (If available)
+    - **Number of Locations**: (If available)
+
+    ## 3. Headquarters / Main Location
+    (Brief note on the corporate headquarters or main operational hub)
+
+    ## 4. Financial Data
+    - **Revenue**: (If available)
+    - **Key Financial Metrics**: (e.g., profit margin, debt level—only if publicly available)
+
+    ## 5. Market Position (Optional)
+    (One or two lines about their market standing, if any data can be found)
+
+    ## 6. Sources
+    - [Link/URL] - Short description of what info was found there
+    - [Link/URL] - Short description of what info was found there
+
+
+search_strategy_ops_task:
+  description: >
+    Investigate any operational and strategic indicators that may suggest 
+    future delivery issues with {supplier_info[name]}. Focus on:
+      - Critical communications (e.g., delivery-stop announcements)
+      - Site or plant closures
+      - Withdrawal of certificates (e.g., quality, safety)
+      - Geopolitical risks (based on the supplier's headquarters or plants)
+      - Machine park conditions (if such information is publicly accessible)
+    Use public records, press releases, governmental or industry-specific databases, 
+    and any other reliable sources to compile your findings.
+
+    Use Markdown-like formatting for structure (e.g., #, ##, -, ---)
+    DONT PUT ```markdown``` in the content
+    DONT INCLUDE ANY FINAL MESSAGE OR THOUGHTS FROM YOU
+  expected_output: >
+    Present the findings in **Markdown** with a clear, consistent structure. Include URLs and 
+    dates wherever possible. Provide text snippets that give context to the nature 
+    or severity of each risk:
+
+    # Operational & Strategic Risk Indicators
+
+    ## 1. Critical Communications
+    - **Description / Text Snippet**:
+    - **Source URL**:
+    - **Date**:
+    - **Preliminary Assessment**: (e.g., “Critical,” “Moderate,” “Low”)
+
+    ## 2. Site or Plant Closures
+    - **Description / Text Snippet**:
+    - **Source URL**:
+    - **Date**:
+    - **Preliminary Assessment**:
+
+    ## 3. Withdrawal of Certificates
+    - **Description / Text Snippet**:
+    - **Source URL**:
+    - **Date**:
+    - **Preliminary Assessment**:
+
+    ## 4. Geopolitical Risks
+    - **Description / Text Snippet**:
+    - **Source URL**:
+    - **Date**:
+    - **Preliminary Assessment**:
+
+    ## 5. Machine Park Conditions
+    - **Description / Text Snippet**:
+    - **Source URL**:
+    - **Date**:
+    - **Preliminary Assessment**:

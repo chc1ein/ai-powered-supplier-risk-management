@@ -1,8 +1,10 @@
 import streamlit as st
+from dotenv import load_dotenv
+
+load_dotenv()
 
 st.set_page_config(
-    page_title="Welcome!",
-    page_icon="👋",
+    page_title="Supplier Risk Management",
     layout="wide",
 )
 
@@ -15,10 +17,11 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.write("# Welcome! 👋")
+st.write("# Supplier Risk Management (PoC)")
 
 st.markdown(
 """
-This is the placeholder for the Landing page.
+This is a Proof of Concept (POC) aims to provide a comprehensive tool for assessing supplier risks.
 """
 )
+
