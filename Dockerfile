@@ -1,4 +1,4 @@
-FROM python:3.13-slim-bookworm AS builder
+FROM python:3.11-slim-bookworm AS builder
 
 WORKDIR /app
 
@@ -38,7 +38,7 @@ RUN --mount=type=secret,id=BOSCHDEVCLOUD_USERNAME \
    export POETRY_HTTP_BASIC_MODANALIT_PASSWORD=$(cat /run/secrets/BOSCHDEVCLOUD_TOKEN) && \
    poetry install --no-ansi --no-root
 
-FROM python:3.13-slim-bookworm AS server
+FROM python:3.11-slim-bookworm AS server
 
 WORKDIR /app
 
@@ -52,7 +52,7 @@ RUN pip3 install --upgrade pip setuptools
 
 # Copy only necessary files from builder
 COPY --from=builder /app /app
-COPY --from=builder /usr/local/lib/python3.13 /usr/local/lib/python3.13
+COPY --from=builder /usr/local/lib/python3.11 /usr/local/lib/python3.11
 COPY --from=builder /usr/local/bin /usr/local/bin
 
 ENV PATH="/app/.venv/bin:$PATH"
