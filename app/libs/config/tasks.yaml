@@ -1,0 +1,205 @@
+# research_lead_task:
+#   description: >
+#     Conduct thorough research on {lead_info[company]} and the {lead_info[industry]}
+#     industry. Focus on their current market position, challenges they might be
+#     facing, and potential needs that our product could address. Use online resources
+#     and the provided tools to gather comprehensive information.
+#   expected_output: >
+#     A detailed report on {lead_info[company]}, including their position in the
+#     {lead_info[industry]} industry, current challenges, and potential needs that
+#     our product could address.
+
+
+# research_company_product_task:
+#   description: >
+#     Analyze {company_info[name]}'s offerings, particularly the {company_info[product_name]}.
+#     Research how our product features and benefits align with the needs and challenges
+#     of {lead_info[company]} in the {lead_info[industry]} industry. Use the company
+#     website and any other available resources to gather detailed product information.
+#   expected_output: >
+#     A comprehensive overview of {company_info[product_name]}, highlighting features
+#     and benefits that specifically address the needs and challenges of {lead_info[company]}.
+
+
+# create_pdf_content_task:
+#   description: >
+#     Using the research on {lead_info[company]} and the analysis of {company_info[product_name]},
+#     create compelling content for a ONE-PAGE sales PDF. The content should effectively
+#     pitch {company_info[product_name]} to {lead_info[company]} represented by {lead_info[name]}, emphasizing how it
+#     addresses their specific needs in the {lead_info[industry]} industry.
+
+#     FOLLOW STRICTLY THIS Structure:
+#     - 1 Attention-grabbing headline
+#     - 1 Brief introduction of {company_info[name]} and {company_info[product_name]}
+#     - JUST 4 (four) Concise Key features and benefits, tailored to {lead_info[company]}'s needs
+#     - 1 Concise and strong call-to-action
+#     - Contact information for {company_info[sales_rep_name]} {company_info[sales_rep_contact]}
+
+#     Use Markdown-like formatting for structure (e.g., #, ##, -, ---)
+#     MUST BE ONE PAGE ONLY AND DONT PUT ```markdown``` in the content AND NO Conclusion section
+#     DONT INCLUDE ANY FINAL MESSAGE OR THOUGHTS FROM YOU
+
+#   expected_output: >
+#     A single Markdown-formatted string containing all the content for the ONE-PAGE Concise
+#     sales PDF, structured and tailored specifically for pitching {company_info[product_name]}
+#     to {lead_info[company]} and to be translated to a PDF format.
+#     MUST BE ONE PAGE ONLY!
+
+
+
+
+
+
+profile_supplier_task:
+  description: >
+    Collect all essential background information about supplier: {supplier_info[name]} address: {supplier_info[address]}, homepage: {supplier_info[homepage]} such as industry,
+    products, headcount, financial data, and location. Use publicly available sources
+    (e.g., the company's official website, registries, press releases).
+    This information will serve as the foundation for all subsequent investigations.
+  expected_output: >
+    A structured overview of the supplier:
+    - Industry / product scope
+    - Company size (headcount, number of locations)
+    - Headquarters / main location
+    - (If publicly available) revenue, financial metrics
+    - Brief assessment of the supplier's market position (optional)
+
+search_strategy_ops_task:
+  description: >
+    Investigate operational and strategic indicators:
+    - Critical communication (e.g., delivery stop announcements)
+    - Site or plant closures
+    - Withdrawal of certificates
+    - Geopolitical risks based on location
+    - Machine park conditions (if discoverable)
+  expected_output: >
+    A collection of relevant findings, including links/sources:
+    - Description of each risk factor
+    - Short text snippet
+    - Source URL and date
+    - Preliminary assessment (e.g., critical, moderate)
+
+search_financial_task:
+  description: >
+    Investigate financial risk factors:
+    - IPO or other significant capital market actions
+    - Financial metrics (if publicly disclosed)
+    - Macroeconomic / market-related developments
+    - Any other notable financial irregularities (e.g., rumors of insolvency, extreme debt)
+  expected_output: >
+    A collection of relevant findings, including links/sources:
+    - Description of each risk factor
+    - Short text snippet
+    - Source URL and date
+    - Preliminary assessment (e.g., critical, moderate)
+
+search_org_changes_task:
+  description: >
+    Investigate organizational changes:
+    - Legal form alterations
+    - Ownership or generational transitions
+    - Intentions to sell the company
+    - Top management changes (CEO, CFO, etc.)
+    - Staff reductions, short-time work, high employee turnover
+  expected_output: >
+    A collection of relevant findings, including links/sources:
+    - Description of each risk factor
+    - Short text snippet
+    - Source URL and date
+    - Preliminary assessment (e.g., critical, moderate)
+
+search_compliance_task:
+  description: >
+    Investigate compliance and reputational indicators:
+    - Negative press coverage
+    - Evidence of customers leaving the supplier
+    - Possible sanctions or legal violations
+    - Signs of fraudulent activities or other severe incidents
+  expected_output: >
+    A collection of relevant findings, including links/sources:
+    - Description of each risk factor
+    - Short text snippet
+    - Source URL and date
+    - Preliminary assessment (e.g., critical, moderate)
+
+analyze_risks_task:
+  description: >
+    Consolidate the findings from all search agents. For each category, indicate whether
+    information was found (information/no information). If information exists, rate
+    it on a low/middle/high scale. Optionally, apply a weighting for each category
+    (e.g., 25% Strategy & Ops, 25% Finance, 25% Organization, 25% Compliance) or use
+    your own scoring logic.
+  expected_output: >
+    A structured overview of all categories and a final risk profile:
+    - Category by category scores (low/middle/high) + justification
+    - "Information/no information" for each category
+    - Optional: individual risk factors with detailed scoring
+    - Overall score or overarching conclusion (if desired)
+
+create_markdown_report_task:
+  description: >
+    Generate a comprehensive Markdown report summarizing all risk evaluations. 
+    **For each category**, you must clearly indicate:
+    - "Information found" or "No information found"
+    - If information is found, a **Score** (low/middle/high)
+    - For each relevant source:
+      - URL of the source
+      - A 2–3 line summary that justifies why this source affects the score
+
+    **Expected structure**:
+
+    # Supplier Risk Report: {supplier_info[name]}
+
+    ## 1. Overview (Profiling)
+    - All output the supplier profile (from profile_supplier_task)
+
+    ## 2. Risk Categories
+    ### 2.1 Strategy & Operations
+    - Information Found: Yes/No
+    - If Yes:
+      - Score: Low/Middle/High
+      - Sources:
+        * URL
+          - 2–3 line summary explaining the content
+          - Reason this impacts the category score
+        * (Repeat for each source)
+
+    ### 2.2 Financial
+    - Information Found: Yes/No
+    - If Yes:
+      - Score: Low/Middle/High
+      - Sources:
+        * URL
+          - 2–3 line summary explaining the content
+          - Reason this impacts the category score
+
+    ### 2.3 Organizational
+    - Information Found: Yes/No
+    - If Yes:
+      - Score: Low/Middle/High
+      - Sources:
+        * URL
+          - 2–3 line summary explaining the content
+          - Reason this impacts the category score
+
+    ### 2.4 Reputation & Compliance
+    - Information Found: Yes/No
+    - If Yes:
+      - Score: Low/Middle/High
+      - Sources:
+        * URL
+          - 2–3 line summary explaining the content
+          - Reason this impacts the category score
+
+    ## 3. Conclusion / Recommendation
+    - Overall rating: Low/Middle/High
+    - Recommended actions or key takeaways
+
+
+    Use Markdown-like formatting for structure (e.g., #, ##, -, ---)
+    DONT PUT ```markdown``` in the content
+    DONT INCLUDE ANY FINAL MESSAGE OR THOUGHTS FROM YOU
+
+  expected_output: >
+    A fully formatted Markdown document that details all categories, scores,
+    and sources. No additional closing statements or salutations at the end.
