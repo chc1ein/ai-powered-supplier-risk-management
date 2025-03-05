@@ -35,3 +35,69 @@ To deploy the AI-powered supplier risk management, follow these steps:
     ```sh
     az containerapp update --name ai-powered-supplier-risk-management --resource-group <RESOURCE_GROUP> --startup-command "modanalit run /app/app/Home.py --server.port=8080 --server.address=0.0.0.0"
     ```
+
+## Technical Documentation
+
+### Initial PoC
+
+#### Agents
+1. Supplier Profiling Specialist
+    - To gather foundational information about the supplier (industry, size, location, financials, etc.)
+    - Expected output:
+        - Supplier name
+        - Homepage
+        - Address
+        - Industry / Product Scope
+        - Company Size
+        - Headquarters / Main Location
+        - Financial Data
+        - Market Position (Optional)
+        - Sources
+
+2. Strategy & Operations Risk Investigator
+    - To identify operational and strategic factors that could impair the supplier's delivery capability
+    - Expected output:
+        - Critical Communications
+        - Site or Plant Closures
+        - Withdrawal of Certificates
+        - Geopolitical Risks
+        - Machine Park Conditions
+
+#### Tools
+1. Search web content  
+    - Searches the web based on a search query for the latest results
+    - Expected output:  
+        - Url
+        - Web contents
+2. Similar articles  
+    - Searches for similar articles to a given url
+    - Expected output:  
+        - Url
+        - Another related web contents
+3. Get web content  
+    - Gets the contents of a specific url
+    - Expected output:  
+        - Url
+        - Web contents
+
+The relevant source can be coming from:  
+1. Company home pages
+2. Linkedin company pages
+3. Financial reports
+4. News
+5. And more other source (government or organization site, blogs, events)
+
+#### Flow
+1. User input
+    - company name
+    - address
+    - homepage
+2. Agent: Supplier Profiling Specialist
+    - To gather foundational information about the supplier.
+    - Tools: Search web content
+3. Agent: Strategy & Operations Risk Investigator
+    - To identify operational and strategic factors that could impair the supplier's delivery capability
+    - Tools: Search web content
+
+
+
