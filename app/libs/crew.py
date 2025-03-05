@@ -8,10 +8,9 @@ from crewai.memory import ShortTermMemory, EntityMemory, LongTermMemory
 from crewai.memory.storage.rag_storage import RAGStorage
 from crewai.memory.storage.ltm_sqlite_storage import LTMSQLiteStorage
 
-from .research import SearchAndContents, FindSimilar, GetContents
+from app.libs.tools.exa_tools import SearchAndContents, FindSimilar, GetContents
 
 load_dotenv()
-
 
 @CrewBase
 class SupplierRiskAssessmentCrewPOC:

@@ -3,7 +3,6 @@ from exa_py import Exa
 import os
 from datetime import datetime, timedelta
 
-
 class SearchAndContents(BaseTool):
     name: str = "Search and Contents Tool"
     description: str = (

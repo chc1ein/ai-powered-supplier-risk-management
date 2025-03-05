@@ -1,7 +1,6 @@
-
-import os
 import streamlit as st
 from dotenv import load_dotenv
+import ray
 
 from app.libs.crew import SupplierRiskAssessmentCrewPOC
 
@@ -35,7 +34,8 @@ name = st.text_input("Supplier Name", "Festo Se & Co.KG")
 address = st.text_input("Supplier Address", "Ruiter Str. 82, 73734 Esslingen")
 homepage = st.text_input("Supplier Homepage", "http://www.festo.com")
 
-def run_poc():
+@ray.remote(num_cpus=1)
+def kickoff_wrapper():
     result = SupplierRiskAssessmentCrewPOC().crew().kickoff(inputs={
         "supplier_info": {
             "name": name,
@@ -43,7 +43,11 @@ def run_poc():
             "homepage": homepage,
         }
     })
+    return result
 
+def run_poc():
+    future = kickoff_wrapper.remote()
+    result = ray.get(future)
     result_container.write(result.raw)
 
 st.button("Run POC", type="primary", on_click=run_poc)
